@@ -59,7 +59,7 @@ const ValentineCard = () => {
             Yaaay!! 🎉
           </h1>
           <p className="text-base sm:text-xl md:text-2xl font-medium text-foreground mb-2">
-            I knew you'd say yes, Lindsey! 💕
+            I knew you'd say yes, my Love! 💕
           </p>
           <p className="text-sm sm:text-lg text-muted-foreground">
             You've made me the happiest person ever! ❤️
@@ -111,7 +111,7 @@ const ValentineCard = () => {
         className="text-2xl sm:text-4xl md:text-5xl mb-1 sm:mb-2"
         style={{ color: "hsl(var(--valentine-rose))" }}
       >
-        Lindsey,
+        Lindsey Kandie,
       </h1>
       <h1
         className="text-xl sm:text-3xl md:text-4xl mb-1 sm:mb-2"
