@@ -8,26 +8,20 @@ const MAX_NO_CLICKS = 8;
 
 const angryMessages = [
   "Please don't choose no... 🥺",
-  "Are you sure?? 😿",
+  "Are you sure, Lindsey?? 😿",
   "You're making kitty sad... 😾",
-  "Really?! Think again! 😤",
+  "Really Lindsey?! Think again! 😤",
   "I'm getting upset now... 💢",
-  "This is your last warning! 😡",
-  "PLEASE JUST SAY YES!! 🔥",
-  "Fine... last chance... 💔",
+  "This is your LAST warning Lindsey! 😡",
+  "LINDSEY PLEASE JUST SAY YES!! 🔥",
+  "Fine... this is truly your last chance... 💔",
 ];
 
-const catImages = [
-  catHappy,    // 0 clicks
-  catHappy,    // 1
-  catAnnoyed,  // 2
-  catAnnoyed,  // 3
-  catAnnoyed,  // 4
-  catAngry,    // 5
-  catAngry,    // 6
-  catAngry,    // 7
-  catAngry,    // 8
-];
+const getCatImage = (count: number) => {
+  if (count <= 1) return catHappy;
+  if (count <= 4) return catAnnoyed;
+  return catAngry;
+};
 
 const ValentineCard = () => {
   const [noCount, setNoCount] = useState(0);
@@ -64,7 +58,7 @@ const ValentineCard = () => {
             Yaaay!! 🎉
           </h1>
           <p className="text-xl md:text-2xl font-medium text-foreground mb-2">
-            I knew you'd say yes! 💕
+            I knew you'd say yes, Lindsey! 💕
           </p>
           <p className="text-lg text-muted-foreground">
             You've made me the happiest person ever! ❤️
@@ -81,13 +75,14 @@ const ValentineCard = () => {
     );
   }
 
-  const currentCat = catImages[Math.min(noCount, catImages.length - 1)];
+  const currentCat = getCatImage(noCount);
 
   return (
     <div className="valentine-card max-w-md mx-4">
-      {/* Cat image */}
-      <div className={shaking ? "animate-shake" : ""}>
+      {/* Cat image - key forces re-render on change */}
+      <div key={`shake-${noCount}`} className={shaking ? "animate-shake" : ""}>
         <img
+          key={`cat-${noCount}`}
           src={currentCat}
           alt="Valentine cat"
           className="w-28 h-28 mx-auto mb-4 object-contain transition-all duration-300"
@@ -97,12 +92,13 @@ const ValentineCard = () => {
       {/* Message under cat */}
       {noCount > 0 && (
         <p
-          className="text-sm md:text-base font-semibold mb-4 transition-all duration-300"
+          key={`msg-${noCount}`}
+          className="text-sm md:text-base font-semibold mb-4 animate-bounce-in"
           style={{
             color: noCount <= 3
               ? "hsl(var(--valentine-purple))"
               : "hsl(var(--accent))",
-            fontSize: `${Math.min(0.875 + noCount * 0.05, 1.25)}rem`,
+            fontSize: `${Math.min(0.875 + noCount * 0.08, 1.4)}rem`,
           }}
         >
           {angryMessages[noCount - 1]}
@@ -114,11 +110,17 @@ const ValentineCard = () => {
         className="text-4xl md:text-5xl mb-2"
         style={{ color: "hsl(var(--valentine-rose))" }}
       >
+        Lindsey,
+      </h1>
+      <h1
+        className="text-3xl md:text-4xl mb-2"
+        style={{ color: "hsl(var(--valentine-purple))" }}
+      >
         Will You Be
       </h1>
       <h1
         className="text-4xl md:text-5xl mb-6"
-        style={{ color: "hsl(var(--valentine-purple))" }}
+        style={{ color: "hsl(var(--valentine-rose))" }}
       >
         My Valentine? 💌
       </h1>
