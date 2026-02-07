@@ -7,7 +7,7 @@ const Index = () => {
     <div
       className="flex min-h-screen items-center justify-center relative overflow-hidden"
       style={{
-        background: `linear-gradient(135deg, hsl(var(--valentine-light)), hsl(var(--valentine-pink) / 0.3), hsl(var(--valentine-purple) / 0.15))`,
+        background: `linear-gradient(135deg, hsl(280 60% 92%), hsl(300 50% 85%), hsl(340 70% 88%), hsl(280 50% 80%))`,
       }}
     >
       <FloatingHearts />
